@@ -38,17 +38,17 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">BOARD LIST</h3>
+        <div>
+          <div>
+            <h3>BOARD LIST</h3>
           </div>
-          <div class="panel-body">
+          <div>
             <h4>
               <Link to="/create">Add Board</Link>
             </h4>
             <TableMain />
           </div>
-        </div>{" "}
+        </div>
       </div>
     );
   }
