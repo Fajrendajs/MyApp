@@ -48,7 +48,7 @@ class TableMain extends Component {
 
         <Table.Body>
           {this.state.boards.map(board => (
-            <Table.Row>
+            <Table.Row key={board.key}>
               <Table.Cell>
                 <Link to={`/show/${board.key}`}>{board.title}</Link>
               </Table.Cell>
