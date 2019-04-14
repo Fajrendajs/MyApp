@@ -42,7 +42,7 @@ class TableMain extends Component {
           <Table.Row>
             <Table.HeaderCell>Title</Table.HeaderCell>
             <Table.HeaderCell>Description</Table.HeaderCell>
-            <Table.HeaderCell>Author</Table.HeaderCell>{" "}
+            <Table.HeaderCell>Author</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 

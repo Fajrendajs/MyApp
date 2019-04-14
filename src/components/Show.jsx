@@ -47,15 +47,15 @@ class Show extends Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
+      <div>
+        <div>
+          <div>
             <h4>
               <Link to="/">Board List</Link>
             </h4>
-            <h3 class="panel-title">{this.state.board.title}</h3>
+            <h3>{this.state.board.title}</h3>
           </div>
-          <div class="panel-body">
+          <div>
             <dl>
               <dt>Description:</dt>
               <dd>{this.state.board.description}</dd>
@@ -63,12 +63,15 @@ class Show extends Component {
               <dd>{this.state.board.author}</dd>
             </dl>
             <Button.Group>
-              <Button onClick={this.delete.bind(this, this.state.key)}>
-                Delete
-              </Button>
+              <Button labelPosition="left" icon="delete" content="Delete" />
               <Button.Or />
               <Link to={`/edit/${this.state.key}`}>
-                <Button positive>Edit</Button>
+                <Button
+                  labelPosition="left"
+                  icon="edit"
+                  content="Edit"
+                  positive
+                />
               </Link>
             </Button.Group>
           </div>
