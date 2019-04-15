@@ -70,6 +70,7 @@ class Create extends Component {
           <Segment attached>
             <Form onSubmit={this.onSubmit}>
               <Form.Input
+              width={8}
                 label="Author"
                 name="author"
                 value={author}
