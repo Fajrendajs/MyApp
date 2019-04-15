@@ -5,6 +5,7 @@ import "semantic-ui-css/semantic.min.css";
 import firebase from "../Firebase";
 
 class TableMain extends Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
     this.ref = firebase.firestore().collection("boards");
@@ -26,13 +27,20 @@ class TableMain extends Component {
         author
       });
     });
-    this.setState({
-      boards
-    });
+    if (this._isMounted) {
+      this.setState({
+        boards
+      });
+    }
   };
 
   componentDidMount() {
+    this._isMounted = true;
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {

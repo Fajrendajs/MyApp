@@ -30,7 +30,7 @@ class Show extends Component {
     });
   }
 
-  delete(id) {
+  delete = id => () => {
     firebase
       .firestore()
       .collection("boards")
@@ -43,7 +43,7 @@ class Show extends Component {
       .catch(error => {
         console.error("Error removing document: ", error);
       });
-  }
+  };
 
   render() {
     return (
@@ -63,7 +63,12 @@ class Show extends Component {
               <dd>{this.state.board.author}</dd>
             </dl>
             <Button.Group>
-              <Button labelPosition="left" icon="delete" content="Delete" />
+              <Button
+                labelPosition="left"
+                icon="delete"
+                content="Delete"
+                onClick={this.delete(this.state.key)}
+              />
               <Button.Or />
               <Link to={`/edit/${this.state.key}`}>
                 <Button
