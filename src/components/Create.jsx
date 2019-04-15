@@ -2,6 +2,17 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import firebase from "../Firebase";
 import { Link } from "react-router-dom";
+import {
+  Grid,
+  Header,
+  Form,
+  Segment,
+  Message,
+  Button,
+  Container,
+  Input
+} from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
 
 class Create extends Component {
   constructor() {
@@ -46,52 +57,41 @@ class Create extends Component {
   render() {
     const { title, description, author } = this.state;
     return (
-      <div>
-        <div>
-          <div>
-            <h3>ADD BOARD</h3>
-          </div>
-          <div>
-            <h4>
-              <Link to="/">Book List</Link>
-            </h4>
-            <form onSubmit={this.onSubmit}>
-              <div>
-                <label htmlFor="title">Title:</label>
-                <input
-                  type="text"
-                  name="title"
-                  value={title}
-                  onChange={this.onChange}
-                  placeholder="Title"
-                />
-              </div>
-              <div>
-                <label htmlFor="description">Description:</label>
-                <textarea
-                  name="description"
-                  onChange={this.onChange}
-                  placeholder="Description"
-                  cols="80"
-                  rows="3"
-                  value={description}
-                />
-              </div>
-              <div>
-                <label htmlFor="author">Author:</label>
-                <input
-                  type="text"
-                  name="author"
-                  value={author}
-                  onChange={this.onChange}
-                  placeholder="Author"
-                />
-              </div>
-              <button type="submit">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
+      <>
+        <Header as="h1">ADD BOARD</Header>
+        <Header as="h1">
+          <Link to="/">Book List</Link>
+        </Header>
+        <Container style={{ paddingTop: 50 }}>
+          <Header as="h2" attached="top" inverted>
+            ADD BOARD
+          </Header>
+
+          <Segment attached>
+            <Form onSubmit={this.onSubmit}>
+              <Form.Input
+                label="Author"
+                name="author"
+                value={author}
+                onChange={this.onChange}
+              />
+              <Form.Input
+                value={description}
+                label="Description"
+                name="description"
+                onChange={this.onChange}
+              />
+              <Form.Input
+                value={title}
+                label="Title"
+                name="title"
+                onChange={this.onChange}
+              />
+              <Button positive>Submit</Button>
+            </Form>
+          </Segment>
+        </Container>
+      </>
     );
   }
 }

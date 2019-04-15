@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 import firebase from "../Firebase";
 import { Link } from "react-router-dom";
+import {
+  Grid,
+  Header,
+  Form,
+  Segment,
+  Message,
+  Button,
+  Container,
+  Input
+} from "semantic-ui-react";
 
 class Edit extends Component {
   constructor(props) {
@@ -69,52 +79,43 @@ class Edit extends Component {
   };
 
   render() {
+    const { title, description, author } = this.state;
     return (
-      <div>
-        <div>
-          <div>
-            <h3>EDIT BOARD</h3>
-          </div>
-          <div>
-            <h4>
-              <Link to={`/show/${this.state.key}`}>Board List</Link>
-            </h4>
-            <form onSubmit={this.onSubmit}>
-              <div>
-                <label htmlFor="title">Title:</label>
-                <input
-                  type="text"
-                  name="title"
-                  value={this.state.title}
-                  onChange={this.onChange}
-                  placeholder="Title"
-                />
-              </div>
-              <div>
-                <label htmlFor="description">Description:</label>
-                <input
-                  type="text"
-                  name="description"
-                  value={this.state.description}
-                  onChange={this.onChange}
-                  placeholder="Description"
-                />
-              </div>
-              <div>
-                <label htmlFor="author">Author:</label>
-                <input
-                  type="text"
-                  name="author"
-                  value={this.state.author}
-                  onChange={this.onChange}
-                  placeholder="Author"
-                />
-              </div>
-              <button type="submit">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
+      <>
+        <Header as="h1">EDIT BOARD</Header>
+        <Header as="h1">
+          <Link to="/">Book List</Link>
+        </Header>
+        <Container style={{ paddingTop: 50 }}>
+          <Header as="h2" attached="top" inverted>
+            EDIT BOARD
+          </Header>
+
+          <Segment attached>
+            <Form onSubmit={this.onSubmit}>
+              <Form.Input
+                label="Author"
+                name="author"
+                value={author}
+                onChange={this.onChange}
+              />
+              <Form.Input
+                value={description}
+                label="Description"
+                name="description"
+                onChange={this.onChange}
+              />
+              <Form.Input
+                value={title}
+                label="Title"
+                name="title"
+                onChange={this.onChange}
+              />
+              <Button positive>Submit</Button>
+            </Form>
+          </Segment>
+        </Container>
+      </>
     );
   }
 }
