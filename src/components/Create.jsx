@@ -10,7 +10,8 @@ import {
   Message,
   Button,
   Container,
-  Input
+  Input,
+  Select
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
@@ -21,7 +22,15 @@ class Create extends Component {
     this.state = {
       title: "",
       description: "",
-      author: ""
+      author: "",
+      teams: new Set([
+        { key: "wsh", text: "Washington", value: "wsh" },
+        { key: "lal", text: "Los Angeles Lakers", value: "lal" }
+      ]),
+      seasons: new Set([
+        { key: "10/11", text: "2010/2011", value: "10/11" },
+        { key: "11/12", text: "2011/2012", value: "11/12" }
+      ])
     };
   }
   onChange = e => {
@@ -69,8 +78,34 @@ class Create extends Component {
 
           <Segment attached>
             <Form onSubmit={this.onSubmit}>
+              <Form.Field
+                required
+                control={Select}
+                options={this.state.teams.keys}
+                label={{
+                  children: "Team",
+                  htmlFor: "form-select-control-team"
+                }}
+                placeholder="Team"
+                search
+                searchInput={{ id: "form-select-control-team" }}
+              />
+
+              <Form.Field
+                required
+                control={Select}
+                options={this.state.seasons}
+                label={{
+                  children: "Season",
+                  htmlFor: "form-select-control-season"
+                }}
+                placeholder="Season"
+                search
+                searchInput={{ id: "form-select-control-season" }}
+              />
+
               <Form.Input
-              width={8}
+                width={8}
                 label="Author"
                 name="author"
                 value={author}
