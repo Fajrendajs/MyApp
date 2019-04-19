@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./App.css";
 import firebase from "./Firebase";
 import TableMain from "./components/TableMain";
+import NavBar from "./components/Navigation/NavBar";
 
 class App extends Component {
   constructor(props) {
@@ -37,19 +38,22 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <>
+        <NavBar />
         <div>
           <div>
-            <h3>BOARD LIST</h3>
-          </div>
-          <div>
-            <h4>
-              <Link to="/create">Add Board</Link>
-            </h4>
-            <TableMain />
+            <div>
+              <h3>BOARD LIST</h3>
+            </div>
+            <div>
+              <h4>
+                <Link to="/create">Add Board</Link>
+              </h4>
+              <TableMain />
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }
